@@ -8,35 +8,100 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #EEEEEE;
   display: flex;
-  align-items: center;
   justify-content: center;
   min-height: 100vh;
-  text-align: center;
   padding: 24px;
 }
 
+/* Page wrapper */
+.page {
+  max-width: 700px;
+  width: 100%;
+}
+
+/* Title */
 h1 {
   font-size: 24px;
   color: #000000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Navigation */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.nav-group {
+  display: inline-flex;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.nav-btn {
+  padding: 10px 18px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+  border-right: 1px solid #d1d5db;
+}
+
+.nav-btn:last-child {
+  border-right: none;
+}
+
+.nav-btn:hover {
+  background: #f3f4f6;
+}
+
+.nav-btn.active {
+  background: #111827;
+  color: #ffffff;
+}
+
+/* Content text */
+.content {
+  text-align: left;
 }
 
 p {
   font-size: 16px;
   color: #000000;
+  line-height: 1.6;
 }
-</style>
 
+</style>
 </head>
+
 <body>
 
-<div>
+<div class="page">
+
 <h1>Work</h1>
-<p>This page will show my professional work.</p>
+
+<div class="top-nav">
+  <div class="nav-group">
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="work.html" class="nav-btn active">Work</a>
+    <a href="interests.html" class="nav-btn">Interests</a>
+  </div>
+</div>
+
+<div class="content">
+  <p>This page will show my professional work.</p>
+</div>
+
 </div>
 
 </body>
