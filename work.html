@@ -19,21 +19,20 @@ body {
   padding: 24px;
 }
 
-/* Page wrapper */
 .page {
   max-width: 700px;
   width: 100%;
 }
 
-/* Title */
 h1 {
   font-size: 24px;
   color: #000000;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
-/* Navigation */
+/* NAV */
+
 .top-nav {
   display: flex;
   justify-content: center;
@@ -42,19 +41,18 @@ h1 {
 
 .nav-group {
   display: inline-flex;
-  border: 1px solid #d1d5db;
-  border-radius: 14px;
+  border: 1px solid #334155;
+  border-radius: 12px;
   overflow: hidden;
-  background: #ffffff;
 }
 
 .nav-btn {
   padding: 10px 18px;
   text-decoration: none;
-  font-size: 14px;
-  color: #111827;
-  background: #ffffff;
-  border-right: 1px solid #d1d5db;
+  color: #000000;
+  font-weight: 600;
+  border-right: 1px solid #334155;
+  transition: all 0.2s ease;
 }
 
 .nav-btn:last-child {
@@ -62,23 +60,28 @@ h1 {
 }
 
 .nav-btn:hover {
-  background: #f3f4f6;
+  background: #000000;
+  color: #FFFFFF;
+  transform: translateY(-2px);
 }
+
+/* ACTIVE PAGE */
 
 .nav-btn.active {
-  background: #111827;
-  color: #ffffff;
+  background: #000000;
+  color: #FFFFFF;
 }
 
-/* Content text */
+/* CONTENT */
+
 .content {
   text-align: left;
 }
 
 p {
   font-size: 16px;
-  color: #000000;
   line-height: 1.6;
+  color: #000000;
 }
 
 </style>
@@ -94,7 +97,7 @@ p {
   <div class="nav-group">
     <a href="index.html" class="nav-btn">Home</a>
     <a href="work.html" class="nav-btn active">Work</a>
-    <a href="interests.html" class="nav-btn">Interests</a>
+    <a href="interest.html" class="nav-btn">Interest</a>
   </div>
 </div>
 
