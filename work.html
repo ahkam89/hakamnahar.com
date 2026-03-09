@@ -38,11 +38,6 @@ h1 {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
-  position: sticky;
-  top: 0;
-  background: #EEEEEE;
-  padding: 10px 0;
-  z-index: 10;
 }
 
 .nav-group {
@@ -207,10 +202,34 @@ h1 {
     padding-top: 0;
   }
 }
+	
+	.bottom-nav {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid #CBD5E1;
+  text-align: center;
+  font-size: 14px;
+  color: #64748B;
+}
+
+.bottom-nav a {
+  color: #64748B;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+.bottom-nav a:hover {
+  color: #000000;
+}
+
+.bottom-nav span {
+  color: #94A3B8;
+}
+	
 </style>
 </head>
 
-<body>
+<body id="top">
   <div class="page">
     <h1>Work</h1>
 
@@ -434,7 +453,17 @@ h1 {
     </div>
   </section>
 </div>
-    </div>
+    
+<footer class="bottom-nav">
+  <a href="index.html">Home</a>
+  <span>·</span>
+  <a href="work.html">Work</a>
+  <span>·</span>
+  <a href="interest.html">Interest</a>
+  <span>·</span>
+  <a href="#top">Back to top ↑</a>
+</footer>
+	  
   </div>
 	
 	<script>
@@ -470,8 +499,10 @@ h1 {
 
     showSlide(currentIndex);
   });
+		
+		
 </script>
-	
+
 	
 </body>
 </html>
