@@ -136,6 +136,61 @@ h1 {
   margin-bottom: 20px;
   font-style: italic;
 }
+	
+	.photo-slider {
+  max-width: 500px;
+  margin: 0 0 20px;
+}
+
+.slider-frame {
+  position: relative;
+}
+
+.slider-image {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  filter: saturate(0.9) contrast(0.95);
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  color: #FFFFFF;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.slider-btn.prev {
+  left: 12px;
+}
+
+.slider-btn.next {
+  right: 12px;
+}
+
+.slider-caption {
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 10px;
+  font-style: italic;
+  line-height: 1.5;
+}
 
 /* Mobile */
 @media (max-width: 700px) {
@@ -175,11 +230,23 @@ h1 {
 
     <div class="timeline-story">
       <h2>High School</h2>
+		
+		<div class="photo-slider" data-slides="[
+  {
+    &quot;src&quot;: &quot;images/highschool-1-edited.jpg&quot;,
+    &quot;alt&quot;: &quot;High school photo&quot;,
+    &quot;caption&quot;: &quot;A photo with a close friend from my boarding school days at SBPI Rawang. Years later he became a medical doctor, but the friendship started in those early school years.&quot;
+  }
+]">
+  <div class="slider-frame">
+    <img src="" alt="" class="slider-image">
+    <button class="slider-btn prev" aria-label="Previous image">‹</button>
+    <button class="slider-btn next" aria-label="Next image">›</button>
+  </div>
+  <p class="slider-caption"></p>
+</div>
 
-      <img src="images/highschool-1.jpeg" alt="High school photo" class="timeline-photo">
-      <p class="photo-caption">Exco Dorm, SBPI Rawang, early 2000s</p>
-
-      <p>
+            <p>
         My journey began when I was thirteen, when I enrolled at <strong>Sekolah Berasrama Penuh Integrasi Rawang</strong>, a boarding school in the quiet town of Rawang, Selangor.
       </p>
 
@@ -295,5 +362,37 @@ h1 {
 </div>
     </div>
   </div>
+	
+	<script>
+  document.querySelectorAll('.photo-slider').forEach(slider => {
+    const image = slider.querySelector('.slider-image');
+    const caption = slider.querySelector('.slider-caption');
+    const prevBtn = slider.querySelector('.prev');
+    const nextBtn = slider.querySelector('.next');
+
+    const slides = JSON.parse(slider.dataset.slides);
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      image.src = slides[index].src;
+      image.alt = slides[index].alt;
+      caption.textContent = slides[index].caption;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    });
+
+    showSlide(currentIndex);
+  });
+</script>
+	
+	
 </body>
 </html>
