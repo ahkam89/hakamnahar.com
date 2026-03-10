@@ -225,10 +225,47 @@ h1 {
 .bottom-nav span {
   color: #94A3B8;
 }
+  
+.capability-section {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.capability-section h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: #111111;
+}
+
+.capability-note {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666666;
+}
+
+.chart-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* subtle scroll animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 	
 </style>
 </head>
-
+	
+	
 <body id="top">
   <div class="page">
     <h1>Work</h1>
@@ -452,6 +489,18 @@ h1 {
       </p>
     </div>
   </section>
+		
+		<section class="capability-section reveal">
+  <h2>Capability Evolution</h2>
+  <p class="capability-note">
+    A visual snapshot of how my capabilities evolved across technical, planning, and business development roles.
+  </p>
+
+  <div class="chart-wrap">
+    <!-- Replace with your Flourish embed code -->
+    <div class="flourish-embed flourish-chart" data-src="visualisation/27977240"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/27977240/thumbnail" width="100%" alt="visualization" /></noscript></div>
+  </div>
+</section>
 </div>
     
 <footer class="bottom-nav">
@@ -503,6 +552,21 @@ h1 {
 		
 </script>
 
+	<script>
+  const revealItems = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  revealItems.forEach((item) => observer.observe(item));
+</script>
 	
 </body>
 </html>
