@@ -152,7 +152,8 @@ h2{
 }
 
 .stat-bar div{
-  animation: growBar 1s ease;
+  width:0;
+  transition:width 1s ease;
 }
 
 @keyframes growBar{
@@ -193,27 +194,48 @@ Each offers a different way to experience creativity, storytelling, and systems.
 <p class="interest-role">The Strategist</p>
 
 <div class="stat-row"><span>Creativity</span><span>90</span></div>
-<div class="stat-bar"><div style="width:90%"></div></div>
+<div class="stat-bar"><div data-width="90%"></div></div>
 
 <div class="stat-row"><span>Exploration</span><span>86</span></div>
-<div class="stat-bar"><div style="width:86%"></div></div>
+<div class="stat-bar"><div data-width="86%"></div></div>
 
 <div class="stat-row"><span>Game Knowledge</span><span>82</span></div>
-<div class="stat-bar"><div style="width:82%"></div></div>
+<div class="stat-bar"><div data-width="82%"></div></div>
 
 <div class="stat-row"><span>Technical Curiosity</span><span>78</span></div>
-<div class="stat-bar"><div style="width:78%"></div></div>
+<div class="stat-bar"><div data-width="78%"></div></div>
 
 <div class="stat-row"><span>Optimization</span><span>74</span></div>
-<div class="stat-bar"><div style="width:74%"></div></div>
+<div class="stat-bar"><div data-width="74%"></div></div>
 
 <div class="stat-row"><span>Adaptability</span><span>70</span></div>
-<div class="stat-bar"><div style="width:70%"></div></div>
+<div class="stat-bar"><div data-width="70%"></div></div>
 
 </section>
 
 
 </div>
 
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bars = entry.target.querySelectorAll('.stat-bar div');
+      bars.forEach((bar, index) => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.width;
+        }, index * 120);
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.7
+});
+
+document.querySelectorAll('.interest-section').forEach(section => {
+  observer.observe(section);
+});
+</script>
 </body>
 </html>
