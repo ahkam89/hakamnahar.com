@@ -114,12 +114,76 @@ display:block;
 margin:40px auto 24px;
 border-radius:18px;
 box-shadow:0 20px 50px rgba(0,0,0,0.15);
-transition:transform 0.35s ease, box-shadow 0.35s ease;
+transition:transform 0.15s ease, box-shadow 0.2s ease;
+transform-style:preserve-3d;
+will-change:transform;
+}
+
+.tilt-card{
+position:relative;
+width:100%;
+max-width:420px;
+margin:40px auto 24px;
+perspective:900px;
+}
+
+.interest-art{
+width:100%;
+display:block;
+border-radius:18px;
+box-shadow:0 25px 60px rgba(0,0,0,0.18);
+transition:transform 0.2s ease, box-shadow 0.25s ease;
+transform-style:preserve-3d;
+will-change:transform;
+}
+
+.card-glare{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border-radius:18px;
+pointer-events:none;
+background:radial-gradient(circle at 50% 50%,
+rgba(255,255,255,0.35),
+rgba(255,255,255,0) 60%);
+opacity:0;
+transition:opacity 0.25s ease;
+}
+
+@keyframes cardBreathing {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.tilt-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 40px auto 24px;
+  perspective: 900px;
+  animation: cardBreathing 4.5s ease-in-out infinite;
+}
+
+.tilt-card:hover,
+.tilt-card:active {
+  animation-play-state: paused;
+}
+
+.tilt-card {
+  animation: cardBreathing 4.5s ease-in-out infinite;
 }
 
 .interest-art:hover{
-transform:translateY(-6px);
-box-shadow:0 30px 70px rgba(0,0,0,0.22);
+box-shadow:0 35px 80px rgba(0,0,0,0.25);
 }
 
 .interest-role{
@@ -188,7 +252,10 @@ Each offers a different way to experience creativity, storytelling, and systems.
 
 <section class="interest-section">
 
+<div class="tilt-card">
 <img src="images/gaming-strategist.png" alt="Gaming character" class="interest-art">
+<div class="card-glare"></div>
+</div>
 
 <h2>Gaming</h2>
 <p class="interest-role">The Strategist</p>
@@ -236,6 +303,76 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.interest-section').forEach(section => {
   observer.observe(section);
 });
+
+const card = document.querySelector('.interest-art');
+const glare = document.querySelector('.card-glare');
+
+card.addEventListener('mousemove', (e) => {
+
+const rect = card.getBoundingClientRect();
+
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+
+const centerX = rect.width / 2;
+const centerY = rect.height / 2;
+
+const rotateX = ((y - centerY) / centerY) * -10;
+const rotateY = ((x - centerX) / centerX) * 12;
+
+card.style.transform =
+`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+
+const glareX = (x / rect.width) * 100;
+const glareY = (y / rect.height) * 100;
+
+glare.style.background =
+`radial-gradient(circle at ${glareX}% ${glareY}%,
+rgba(255,255,255,0.35),
+rgba(255,255,255,0) 60%)`;
+
+glare.style.opacity = 1;
+
+card.style.boxShadow =
+`${-rotateY*2}px ${rotateX*2}px 60px rgba(0,0,0,0.25)`;
+
+});
+
+card.addEventListener('mouseleave', () => {
+
+card.style.transform =
+'rotateX(0deg) rotateY(0deg) scale(1)';
+
+card.style.boxShadow =
+'0 25px 60px rgba(0,0,0,0.18)';
+
+glare.style.opacity = 0;
+
+});
+
+// Mobile touch interaction
+card.addEventListener('touchstart', () => {
+
+card.style.transform =
+'rotateX(-4deg) rotateY(6deg) scale(1.04)';
+
+card.style.boxShadow =
+'0 35px 80px rgba(0,0,0,0.25)';
+
+});
+
+card.addEventListener('touchend', () => {
+
+card.style.transform =
+'rotateX(0deg) rotateY(0deg) scale(1)';
+
+card.style.boxShadow =
+'0 25px 60px rgba(0,0,0,0.18)';
+
+});
+
 </script>
+
+
 </body>
 </html>
