@@ -369,6 +369,81 @@ h2{
   display: none;
 }
 
+.game-modal.hidden{
+  display:none;
+}
+
+.game-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+}
+
+.game-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+
+.game-modal-panel{
+  position: relative;
+  width: min(200px, calc(100% - 48px));
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #f5f5f5;
+  color: #000000;
+  border-radius: 24px;
+  padding: 24px 20px 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+  text-align: center;
+  z-index: 1;
+}
+
+.game-modal-close{
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: #000000;
+}
+
+.game-modal-icon{
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.05);
+}
+
+.game-modal-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.game-modal-panel h3{
+  margin:0 0 10px;
+  font-size:1.1rem;
+  line-height:1.25;
+}
+
+.game-modal-panel p{
+  margin:0;
+  font-size:0.95rem;
+  line-height:1.55;
+  opacity:0.78;
+}
+
 @media (max-width: 980px) {
   .game-grid-icons {
     grid-template-columns: repeat(2, 1fr);
@@ -381,20 +456,30 @@ h2{
   }
 
   .game-grid-icons {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
 
   .game-icon-card {
-    padding: 22px 18px 18px;
-    border-radius: 20px;
+    padding: 12px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 88px;
+    cursor: pointer;
+  }
+
+  .game-icon-card h3,
+  .game-icon-card p {
+    display: none;
   }
 
   .game-icon-wrap {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    margin-bottom: 16px;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    margin-bottom: 0;
   }
 }
 
@@ -405,6 +490,17 @@ h2{
   color:#000000;
   text-align:center;
   margin:8px 0 14px;
+}
+
+@media (max-width: 640px) {
+  .tilt-card{
+    max-width: 240px;
+    margin: 28px auto 20px;
+  }
+
+  .interest-art{
+    border-radius: 16px;
+  }
 }
 
 </style>
@@ -559,6 +655,22 @@ Each offers a different way to experience creativity, storytelling, and systems.
   </div>
 </section>
 
+<div class="game-modal hidden" id="gameModal">
+  <div class="game-modal-backdrop" id="gameModalBackdrop"></div>
+
+  <div class="game-modal-panel" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
+    <button class="game-modal-close" id="gameModalClose" type="button" aria-label="Close">
+      ×
+    </button>
+
+    <div class="game-modal-icon">
+      <img id="gameModalImage" src="" alt="">
+    </div>
+
+    <h3 id="gameModalTitle"></h3>
+    <p id="gameModalDesc"></p>
+  </div>
+</div>
 
 </div>
 
@@ -657,6 +769,13 @@ card.style.boxShadow =
 const gamesToggleBtn = document.getElementById('gamesToggleBtn');
 const gamesGrid = document.getElementById('gamesGrid');
 
+const gameModal = document.getElementById('gameModal');
+const gameModalBackdrop = document.getElementById('gameModalBackdrop');
+const gameModalClose = document.getElementById('gameModalClose');
+const gameModalImage = document.getElementById('gameModalImage');
+const gameModalTitle = document.getElementById('gameModalTitle');
+const gameModalDesc = document.getElementById('gameModalDesc');
+
 gamesToggleBtn.addEventListener('click', () => {
   gamesGrid.classList.toggle('hidden');
 
@@ -664,6 +783,44 @@ gamesToggleBtn.addEventListener('click', () => {
     gamesToggleBtn.textContent = 'Show ▼';
   } else {
     gamesToggleBtn.textContent = 'Hide ▲';
+  }
+});
+
+function openGameModal(card) {
+  const img = card.querySelector('img');
+  const title = card.querySelector('h3');
+  const desc = card.querySelector('p');
+
+  if (!img || !title || !desc) return;
+
+  gameModalImage.src = img.src;
+  gameModalImage.alt = img.alt;
+  gameModalTitle.textContent = title.textContent;
+  gameModalDesc.textContent = desc.textContent;
+
+  gameModal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGameModal() {
+  gameModal.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.game-icon-card').forEach(card => {
+  card.addEventListener('click', () => {
+    if (window.innerWidth <= 640) {
+      openGameModal(card);
+    }
+  });
+});
+
+gameModalBackdrop.addEventListener('click', closeGameModal);
+gameModalClose.addEventListener('click', closeGameModal);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeGameModal();
   }
 });
 </script>
