@@ -25,7 +25,7 @@ body {
   max-width: 700px;
   width: 100%;
   padding: 24px 0 48px;
-}
+}ƒ√
 
 h1 {
   font-size: 24px;
@@ -183,7 +183,8 @@ transition:opacity 0.25s ease;
 }
 
 .interest-art:hover{
-box-shadow:0 35px 80px rgba(0,0,0,0.25);
+transform:translateY(-3px);
+box-shadow:0 24px 55px rgba(0,0,0,0.18);
 }
 
 .interest-role{
@@ -197,6 +198,12 @@ text-align:center;
 .interest-section{
 margin-top:70px;
 animation:fadeUp 0.9s ease;
+}
+
+.interest-card{
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
 }
 
 @keyframes fadeUp{
@@ -254,29 +261,29 @@ Each offers a different way to experience creativity, storytelling, and systems.
 
 <div class="tilt-card">
 <img src="images/gaming-strategist.png" alt="Gaming character" class="interest-art">
-<div class="card-glare"></div>
+
+<div class="interest-card">
+  <h2>Gaming</h2>
+  <p class="interest-role">The Strategist</p>
+
+  <div class="stat-row"><span>Creativity</span><span>90</span></div>
+  <div class="stat-bar"><div data-width="90%"></div></div>
+
+  <div class="stat-row"><span>Exploration</span><span>86</span></div>
+  <div class="stat-bar"><div data-width="86%"></div></div>
+
+  <div class="stat-row"><span>Game Knowledge</span><span>82</span></div>
+  <div class="stat-bar"><div data-width="82%"></div></div>
+
+  <div class="stat-row"><span>Technical Curiosity</span><span>78</span></div>
+  <div class="stat-bar"><div data-width="78%"></div></div>
+
+  <div class="stat-row"><span>Optimization</span><span>74</span></div>
+  <div class="stat-bar"><div data-width="74%"></div></div>
+
+  <div class="stat-row"><span>Adaptability</span><span>70</span></div>
+  <div class="stat-bar"><div data-width="70%"></div></div>
 </div>
-
-<h2>Gaming</h2>
-<p class="interest-role">The Strategist</p>
-
-<div class="stat-row"><span>Creativity</span><span>90</span></div>
-<div class="stat-bar"><div data-width="90%"></div></div>
-
-<div class="stat-row"><span>Exploration</span><span>86</span></div>
-<div class="stat-bar"><div data-width="86%"></div></div>
-
-<div class="stat-row"><span>Game Knowledge</span><span>82</span></div>
-<div class="stat-bar"><div data-width="82%"></div></div>
-
-<div class="stat-row"><span>Technical Curiosity</span><span>78</span></div>
-<div class="stat-bar"><div data-width="78%"></div></div>
-
-<div class="stat-row"><span>Optimization</span><span>74</span></div>
-<div class="stat-bar"><div data-width="74%"></div></div>
-
-<div class="stat-row"><span>Adaptability</span><span>70</span></div>
-<div class="stat-bar"><div data-width="70%"></div></div>
 
 </section>
 
@@ -317,8 +324,8 @@ const y = e.clientY - rect.top;
 const centerX = rect.width / 2;
 const centerY = rect.height / 2;
 
-const rotateX = ((y - centerY) / centerY) * -10;
-const rotateY = ((x - centerX) / centerX) * 12;
+const rotateX = ((y - centerY) / centerY) * -6;
+const rotateY = ((x - centerX) / centerX) * 6;
 
 card.style.transform =
 `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
