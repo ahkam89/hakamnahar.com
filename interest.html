@@ -109,7 +109,7 @@ p {
 
 .interest-art{
 width:100%;
-max-width:420px;
+max-width:320px;
 display:block;
 margin:40px auto 24px;
 border-radius:18px;
@@ -122,7 +122,7 @@ will-change:transform;
 .tilt-card{
 position:relative;
 width:100%;
-max-width:420px;
+max-width:320px;
 margin:40px auto 24px;
 perspective:900px;
 }
@@ -135,6 +135,18 @@ box-shadow:0 25px 60px rgba(0,0,0,0.18);
 transition:transform 0.2s ease, box-shadow 0.25s ease;
 transform-style:preserve-3d;
 will-change:transform;
+}
+
+.interest-summary{
+  max-width:680px;
+  margin:0 auto 18px;
+}
+
+.stat-row,
+.stat-bar{
+  max-width:680px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .card-glare{
@@ -167,19 +179,28 @@ transition:opacity 0.25s ease;
 .tilt-card {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 320px;
   margin: 40px auto 24px;
   perspective: 900px;
-  animation: cardBreathing 4.5s ease-in-out infinite;
 }
 
-.tilt-card:hover,
-.tilt-card:active {
+.interest-art {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.interest-art:hover {
   animation-play-state: paused;
 }
 
-.tilt-card {
-  animation: cardBreathing 4.5s ease-in-out infinite;
+.interest-art:hover,
+.interest-art:active {
+  animation-play-state: paused;
 }
 
 .interest-art:hover{
@@ -202,8 +223,7 @@ animation:fadeUp 0.9s ease;
 
 .interest-card{
   width:100%;
-  max-width:420px;
-  margin:0 auto;
+  max-width:680px;
 }
 
 @keyframes fadeUp{
@@ -233,6 +253,160 @@ h2{
   }
 }
 
+.gaming-dna-section {
+  width: min(1100px, 100%);
+  margin: 120px auto;
+}
+
+.gaming-dna-header {
+  margin-bottom: 28px;
+}
+
+.gaming-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 10px;
+}
+
+.gaming-dna-header h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+
+.gaming-intro {
+  max-width: 680px;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.72;
+  margin: 0;
+}
+
+.game-grid-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.game-icon-card {
+  position: relative;
+  padding: 26px 22px 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.game-icon-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.game-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.game-icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.game-icon-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.game-icon-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  opacity: 0.72;
+}
+
+.content-width{
+  max-width:680px;
+  margin:0 auto;
+}
+
+.games-toggle-wrap{
+  margin: 18px auto 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.games-toggle-btn{
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.games-toggle-btn:hover{
+  background: #000000;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.game-grid-icons.hidden{
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .game-grid-icons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .gaming-dna-section {
+    margin: 90px auto;
+  }
+
+  .game-grid-icons {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .game-icon-card {
+    padding: 22px 18px 18px;
+    border-radius: 20px;
+  }
+
+  .game-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+.interest-subtitle{
+  font-size:16px;
+  line-height:1.6;
+  font-weight:600;
+  color:#000000;
+  text-align:center;
+  margin:8px 0 14px;
+}
+
 </style>
 </head>
 
@@ -258,33 +432,131 @@ Each offers a different way to experience creativity, storytelling, and systems.
 <hr>
 
 <section class="interest-section">
+  <div class="tilt-card">
+    <img src="images/gaming-strategist.png" alt="Gaming character" class="interest-art">
+  </div>
 
-<div class="tilt-card">
-<img src="images/gaming-strategist.png" alt="Gaming character" class="interest-art">
+  <div class="interest-card content-width">
+    <h2>Gaming</h2>
+    <h3 class="interest-subtitle">The Strategist</h3>
 
-<div class="interest-card">
-  <h2>Gaming</h2>
-  <p class="interest-role">The Strategist</p>
+    <p class="interest-summary">
+      I’m drawn to games that reward planning, creativity, exploration, and smart decision-making.
+      “The Strategist” reflects how I play: learning systems, adapting quickly, and finding satisfaction in depth over speed.
+      The games below are the ones that shaped this style the most.
+    </p>
 
-  <div class="stat-row"><span>Creativity</span><span>90</span></div>
-  <div class="stat-bar"><div data-width="90%"></div></div>
+    <div class="stat-row"><span>Creativity</span><span>90</span></div>
+    <div class="stat-bar"><div data-width="90%"></div></div>
 
-  <div class="stat-row"><span>Exploration</span><span>86</span></div>
-  <div class="stat-bar"><div data-width="86%"></div></div>
+    <div class="stat-row"><span>Exploration</span><span>86</span></div>
+    <div class="stat-bar"><div data-width="86%"></div></div>
 
-  <div class="stat-row"><span>Game Knowledge</span><span>82</span></div>
-  <div class="stat-bar"><div data-width="82%"></div></div>
+    <div class="stat-row"><span>Game Knowledge</span><span>82</span></div>
+    <div class="stat-bar"><div data-width="82%"></div></div>
 
-  <div class="stat-row"><span>Technical Curiosity</span><span>78</span></div>
-  <div class="stat-bar"><div data-width="78%"></div></div>
+    <div class="stat-row"><span>Technical Curiosity</span><span>78</span></div>
+    <div class="stat-bar"><div data-width="78%"></div></div>
 
-  <div class="stat-row"><span>Optimization</span><span>74</span></div>
-  <div class="stat-bar"><div data-width="74%"></div></div>
+    <div class="stat-row"><span>Optimization</span><span>74</span></div>
+    <div class="stat-bar"><div data-width="74%"></div></div>
 
-  <div class="stat-row"><span>Adaptability</span><span>70</span></div>
-  <div class="stat-bar"><div data-width="70%"></div></div>
+    <div class="stat-row"><span>Adaptability</span><span>70</span></div>
+    <div class="stat-bar"><div data-width="70%"></div></div>
+  </div>
+</section>
+
+
+<section class="gaming-dna-section">
+  <div class="content-width">
+    <h3 class="interest-subtitle">Games Behind The Numbers</h3>
+    <p class="interest-summary">
+      These games explain why creativity, exploration, systems thinking, and optimization appear strongly in my play style.
+    </p>
+  </div>
+
+<div class="games-toggle-wrap">
+  <div class="nav-group">
+    <button class="nav-btn games-toggle-btn" id="gamesToggleBtn" type="button">
+      Show ▼
+    </button>
+  </div>
 </div>
 
+<div class="game-grid-icons hidden" id="gamesGrid">
+  <div class="game-icon-card">
+  <div class="game-icon-wrap">
+    <img src="images/games/diablo2-icon.png" alt="Diablo II Lord of Destruction icon">
+  </div>
+  <h3>Diablo II: Lord of Destruction</h3>
+  <p>Dark fantasy, loot systems, timeless design.</p>
+</div>
+  
+  <div class="game-icon-card">
+  <div class="game-icon-wrap">
+    <img src="images/games/w3-icon.png" alt="Warcraft III The Frozen Throne icon">
+  </div>
+  <h3>Warcraft III: The Frozen Throne</h3>
+  <p>Strategy roots and legendary storytelling.</p>
+</div>
+
+  
+    <div class="game-icon-card">
+      <div class="game-icon-wrap">
+        <img src="images/games/factorio-icon.png" alt="Factorio icon">
+      </div>
+      <h3>Factorio</h3>
+      <p>Systems, automation, optimization.</p>
+    </div>
+
+    <div class="game-icon-card">
+      <div class="game-icon-wrap">
+        <img src="images/games/valheim-icon.png" alt="Valheim icon">
+      </div>
+      <h3>Valheim</h3>
+      <p>Exploration, survival, atmosphere.</p>
+    </div>
+
+    <div class="game-icon-card">
+      <div class="game-icon-wrap">
+        <img src="images/games/death-stranding-con.png" alt="Death Stranding icon">
+      </div>
+      <h3>Death Stranding</h3>
+      <p>Solitude, terrain, quiet immersion.</p>
+    </div>
+
+    <div class="game-icon-card">
+      <div class="game-icon-wrap">
+        <img src="images/games/frostpunk-icon.png" alt="Frostpunk icon">
+      </div>
+      <h3>Frostpunk</h3>
+      <p>Pressure, strategy, hard choices.</p>
+    </div>
+
+    <div class="game-icon-card">
+      <div class="game-icon-wrap">
+        <img src="images/games/balatro-icon.png" alt="Balatro icon">
+      </div>
+      <h3>Balatro</h3>
+      <p>Pattern mastery and clever risk.</p>
+    </div>
+
+    <div class="game-icon-card">
+      <div class="game-icon-wrap">
+        <img src="images/games/stardew-valley-icon.png" alt="Stardew Valley icon">
+      </div>
+      <h3>Stardew Valley</h3>
+      <p>Comfort, rhythm, long-term progression.</p>
+    </div>
+
+    <div class="game-icon-card">
+      <div class="game-icon-wrap">
+        <img src="images/games/minecraft-icon.ico" alt="Minecraft icon">
+      </div>
+      <h3>Minecraft</h3>
+      <p>Endless building and imagination.</p>
+    </div>
+  </div>
 </section>
 
 
@@ -304,7 +576,7 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, {
-  threshold: 0.7
+  threshold: 0.25
 });
 
 document.querySelectorAll('.interest-section').forEach(section => {
@@ -312,56 +584,55 @@ document.querySelectorAll('.interest-section').forEach(section => {
 });
 
 const card = document.querySelector('.interest-art');
-const glare = document.querySelector('.card-glare');
 
 card.addEventListener('mousemove', (e) => {
+  const rect = card.getBoundingClientRect();
 
-const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
-const x = e.clientX - rect.left;
-const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
 
-const centerX = rect.width / 2;
-const centerY = rect.height / 2;
+  const rotateX = ((y - centerY) / centerY) * -3;
+  const rotateY = ((x - centerX) / centerX) * 3;
 
-const rotateX = ((y - centerY) / centerY) * -6;
-const rotateY = ((x - centerX) / centerX) * 6;
+  card.style.transform =
+  `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
 
-card.style.transform =
-`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-
-const glareX = (x / rect.width) * 100;
-const glareY = (y / rect.height) * 100;
-
-glare.style.background =
-`radial-gradient(circle at ${glareX}% ${glareY}%,
-rgba(255,255,255,0.35),
-rgba(255,255,255,0) 60%)`;
-
-glare.style.opacity = 1;
-
-card.style.boxShadow =
-`${-rotateY*2}px ${rotateX*2}px 60px rgba(0,0,0,0.25)`;
-
+  card.style.boxShadow =
+  `${-rotateY*2}px ${rotateX*2}px 60px rgba(0,0,0,0.25)`;
 });
 
 card.addEventListener('mouseleave', () => {
+  card.style.transform =
+  'rotateX(0deg) rotateY(0deg) scale(1)';
 
-card.style.transform =
-'rotateX(0deg) rotateY(0deg) scale(1)';
+  card.style.boxShadow =
+  '0 25px 60px rgba(0,0,0,0.18)';
+});
 
-card.style.boxShadow =
-'0 25px 60px rgba(0,0,0,0.18)';
+card.addEventListener('touchstart', () => {
+  card.style.transform =
+  'rotateX(-2deg) rotateY(6deg) scale(1.01)';
 
-glare.style.opacity = 0;
+  card.style.boxShadow =
+  '0 35px 80px rgba(0,0,0,0.25)';
+});
 
+card.addEventListener('touchend', () => {
+  card.style.transform =
+  'rotateX(0deg) rotateY(0deg) scale(1)';
+
+  card.style.boxShadow =
+  '0 25px 60px rgba(0,0,0,0.18)';
 });
 
 // Mobile touch interaction
 card.addEventListener('touchstart', () => {
 
 card.style.transform =
-'rotateX(-4deg) rotateY(6deg) scale(1.04)';
+'rotateX(-2deg) rotateY(6deg) scale(1.01)';
 
 card.style.boxShadow =
 '0 35px 80px rgba(0,0,0,0.25)';
@@ -378,8 +649,24 @@ card.style.boxShadow =
 
 });
 
+
+
 </script>
 
+<script>
+const gamesToggleBtn = document.getElementById('gamesToggleBtn');
+const gamesGrid = document.getElementById('gamesGrid');
+
+gamesToggleBtn.addEventListener('click', () => {
+  gamesGrid.classList.toggle('hidden');
+
+  if (gamesGrid.classList.contains('hidden')) {
+    gamesToggleBtn.textContent = 'Show ▼';
+  } else {
+    gamesToggleBtn.textContent = 'Hide ▲';
+  }
+});
+</script>
 
 </body>
 </html>
