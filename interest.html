@@ -672,7 +672,102 @@ Each offers a different way to experience creativity, storytelling, and systems.
   </div>
 </div>
 
+<hr>
+
+<section class="interest-section">
+  <div class="tilt-card">
+    <img src="images/film-lorekeeper.png" alt="The Lorekeeper card" class="interest-art">
+  </div>
+
+  <div class="interest-card content-width">
+    <h2>Film</h2>
+    <h3 class="interest-subtitle">The Lorekeeper</h3>
+
+    <p class="interest-summary">
+      I keep coming back to stories about ambition, betrayal, legacy, and power, especially when they come with sharp dialogue and worlds that feel bigger than the characters themselves.
+    </p>
+
+      <div class="stat-row"><span>World Immersion</span><span>92</span></div>
+      <div class="stat-bar"><div data-width="92%"></div></div>
+      <div class="stat-row"><span>Legacy &amp; Power</span><span>89</span></div>
+      <div class="stat-bar"><div data-width="89%"></div></div>
+
+<div class="stat-row"><span>Atmosphere Recall</span><span>87</span></div>
+<div class="stat-bar"><div data-width="87%"></div></div>
+
+<div class="stat-row"><span>Dialogue Weight</span><span>84</span></div>
+<div class="stat-bar"><div data-width="84%"></div></div>
+  </div>
+
+</section>
+
+<section class="gaming-dna-section">
+  <div class="content-width">
+    <h3 class="interest-subtitle">Films Behind The Identity</h3>
+    <p class="interest-summary">
+      These are some of the stories, directors, and worlds that shaped why “The Lorekeeper”
+      feels like the right fit.
+    </p>
+  </div>
+
+  <div class="games-toggle-wrap">
+  <div class="nav-group">
+    <button class="nav-btn games-toggle-btn" id="filmsToggleBtn" type="button">
+      Show ▼
+    </button>
+  </div>
 </div>
+
+  <div class="game-grid-icons hidden" id="filmsGrid">
+  <div class="game-icon-card">
+    <div class="game-icon-wrap">
+      <img src="images/films/departed-poster.jpg" alt="The Departed poster">
+    </div>
+    <h3>The Departed</h3>
+    <p>Scorsese crime, tension, and downfall.</p>
+  </div>
+
+  <div class="game-icon-card">
+    <div class="game-icon-wrap">
+      <img src="images/films/fargo-poster.jpg" alt="Fargo poster">
+    </div>
+    <h3>Fargo</h3>
+    <p>Coen atmosphere, irony, and human mess.</p>
+  </div>
+
+  <div class="game-icon-card">
+    <div class="game-icon-wrap">
+      <img src="images/films/true-grit-poster.jpg" alt="True Grit poster">
+    </div>
+    <h3>True Grit</h3>
+    <p>Mythic grit, character, and old-world voice.</p>
+  </div>
+
+  <div class="game-icon-card">
+    <div class="game-icon-wrap">
+      <img src="images/films/lotr-poster.jpg" alt="The Lord of the Rings poster">
+    </div>
+    <h3>LOTR</h3>
+    <p>Epic worldbuilding, legacy, and timeless scale.</p>
+  </div>
+
+  <div class="game-icon-card">
+    <div class="game-icon-wrap">
+      <img src="images/films/mad-max-poster.jpg" alt="Mad Max poster">
+    </div>
+    <h3>Mad Max</h3>
+    <p>Pure momentum, survival, and visual force.</p>
+  </div>
+
+  <div class="game-icon-card">
+    <div class="game-icon-wrap">
+      <img src="images/films/revenant-poster.jpg" alt="The Revenant poster">
+    </div>
+    <h3>The Revenant</h3>
+    <p>Harsh survival, obsession, and raw atmosphere.</p>
+  </div>
+</div>
+</section>
 
 <script>
 const observer = new IntersectionObserver(entries => {
@@ -695,74 +790,44 @@ document.querySelectorAll('.interest-section').forEach(section => {
   observer.observe(section);
 });
 
-const card = document.querySelector('.interest-art');
+document.querySelectorAll('.tilt-card').forEach(wrapper => {
+  const card = wrapper.querySelector('.interest-art');
+  if (!card) return;
 
-card.addEventListener('mousemove', (e) => {
-  const rect = card.getBoundingClientRect();
+  wrapper.addEventListener('mousemove', (e) => {
+    const rect = wrapper.getBoundingClientRect();
 
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-  const rotateX = ((y - centerY) / centerY) * -3;
-  const rotateY = ((x - centerX) / centerX) * 3;
+    const rotateX = ((y - centerY) / centerY) * -3;
+    const rotateY = ((x - centerX) / centerX) * 3;
 
-  card.style.transform =
-  `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    card.style.transform =
+      `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
 
-  card.style.boxShadow =
-  `${-rotateY*2}px ${rotateX*2}px 60px rgba(0,0,0,0.25)`;
+    card.style.boxShadow =
+      `${-rotateY * 2}px ${rotateX * 2}px 60px rgba(0,0,0,0.25)`;
+  });
+
+  wrapper.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    card.style.boxShadow = '0 25px 60px rgba(0,0,0,0.18)';
+  });
+
+  wrapper.addEventListener('touchstart', () => {
+    card.style.transform = 'rotateX(-2deg) rotateY(6deg) scale(1.01)';
+    card.style.boxShadow = '0 35px 80px rgba(0,0,0,0.25)';
+  }, { passive: true });
+
+  wrapper.addEventListener('touchend', () => {
+    card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    card.style.boxShadow = '0 25px 60px rgba(0,0,0,0.18)';
+  }, { passive: true });
 });
-
-card.addEventListener('mouseleave', () => {
-  card.style.transform =
-  'rotateX(0deg) rotateY(0deg) scale(1)';
-
-  card.style.boxShadow =
-  '0 25px 60px rgba(0,0,0,0.18)';
-});
-
-card.addEventListener('touchstart', () => {
-  card.style.transform =
-  'rotateX(-2deg) rotateY(6deg) scale(1.01)';
-
-  card.style.boxShadow =
-  '0 35px 80px rgba(0,0,0,0.25)';
-});
-
-card.addEventListener('touchend', () => {
-  card.style.transform =
-  'rotateX(0deg) rotateY(0deg) scale(1)';
-
-  card.style.boxShadow =
-  '0 25px 60px rgba(0,0,0,0.18)';
-});
-
-// Mobile touch interaction
-card.addEventListener('touchstart', () => {
-
-card.style.transform =
-'rotateX(-2deg) rotateY(6deg) scale(1.01)';
-
-card.style.boxShadow =
-'0 35px 80px rgba(0,0,0,0.25)';
-
-});
-
-card.addEventListener('touchend', () => {
-
-card.style.transform =
-'rotateX(0deg) rotateY(0deg) scale(1)';
-
-card.style.boxShadow =
-'0 25px 60px rgba(0,0,0,0.18)';
-
-});
-
-
-
 </script>
 
 <script>
@@ -823,6 +888,20 @@ document.addEventListener('keydown', (e) => {
     closeGameModal();
   }
 });
+
+const filmsToggleBtn = document.getElementById('filmsToggleBtn');
+const filmsGrid = document.getElementById('filmsGrid');
+
+filmsToggleBtn.addEventListener('click', () => {
+  filmsGrid.classList.toggle('hidden');
+
+  if (filmsGrid.classList.contains('hidden')) {
+    filmsToggleBtn.textContent = 'Show ▼';
+  } else {
+    filmsToggleBtn.textContent = 'Hide ▲';
+  }
+});
+
 </script>
 
 </body>
