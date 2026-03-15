@@ -137,21 +137,6 @@ will-change:transform;
   margin-right:auto;
 }
 
-.card-glare{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-border-radius:18px;
-pointer-events:none;
-background:radial-gradient(circle at 50% 50%,
-rgba(255,255,255,0.35),
-rgba(255,255,255,0) 60%);
-opacity:0;
-transition:opacity 0.25s ease;
-}
-
 @keyframes cardBreathing {
   0% {
     transform: translateY(0px);
@@ -180,20 +165,6 @@ transition:opacity 0.25s ease;
   transition: transform 0.2s ease, box-shadow 0.25s ease;
   transform-style: preserve-3d;
   will-change: transform;
-}
-
-.interest-art:hover {
-  animation-play-state: paused;
-}
-
-.interest-art:hover,
-.interest-art:active {
-  animation-play-state: paused;
-}
-
-.interest-art:hover{
-transform:translateY(-3px);
-box-shadow:0 24px 55px rgba(0,0,0,0.18);
 }
 
 .interest-role{
